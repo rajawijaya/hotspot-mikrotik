@@ -1,0 +1,132 @@
+<html>
+<head>
+<!-- $(if refresh-timeout) -->
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+<!-- $(endif) -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>Internet hotspot - Status</title>
+<link rel="stylesheet" href="css/status.css">
+<script>
+
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+</script>
+    
+</head>
+<body $(if advert-pending == 'yes') onLoad="openAdvert()" $(endif)>
+
+    <div class="container">
+        <div class="title">ICafe</div>
+        <div class="info">
+            <!-- $(if login-by == 'trial') -->
+            <!-- <h1>Halo, Selamat menikmati internet gratis!</h1> -->
+            <!-- $(elif login-by != 'mac') -->
+            <h1>Halo $(username), Selamat menikmati paket internet mu!</h1>
+            <!-- $(endif)  -->
+        </div>
+
+        <div class="card-wrapper">
+            <div class="card ">
+                <h1>101.213.20.15</h1>
+                <p>IP Address</p>
+            </div>
+
+            <div class="card ">
+                <h1>AE:52:WE:85:12</h1>
+                <p>MAC Address</p>
+            </div>
+    
+            <div class="card ">
+                <h1>20 Mib</h1>
+                <p>Upload</p>
+            </div>
+    
+            <div class="card ">
+                <h1>50 Mib</h1>
+                <p>Download</p>
+            </div>
+    
+            <div class="card ">
+                <h1>1m30s</h1>
+                <p>Terkoneksi</p>
+            </div>
+    
+            <!-- $(if session-time-left) -->
+            <div class="card ">
+                <h1>30s</h1>
+                <p>Sisa Waktu</p>
+            </div>
+            <!-- $(endif) -->
+
+            <!-- $(if blocked == 'yes') -->
+            <div class="card ">
+                <h1><a href="$(link-advert)" target="hotspot_advert">Advertisement required</a></h1>
+                <p>Advertise</p>
+            </div>
+            <!-- $(elif refresh-timeout) -->
+            <div class="card ">
+                <h1>1m</h1>
+                <p>Status Refresh</p>
+            </div>
+            <!-- $(endif) -->
+        </div>
+
+        <!-- $(if login-by-mac != 'yes') -->
+        <form action="">
+            <input type="submit" value="Keluar">
+        </form>
+        <!-- $(endif) -->
+    </div>
+
+
+            <!-- <div class="wrap">
+                $(if login-by == 'trial')
+                    <h1>Halo, Selamat menikmati internet gratis!</h1>
+                $(elif login-by != 'mac')
+                    <h1>Halo $(username), Selamat menikmati paket internet mu!</h1>
+                $(endif)                
+
+                <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <table>
+                        <tr><td>IP address</td><td>: $(ip)</td></tr>
+                        <tr><td>Bytes up</td><td>: $(bytes-in-nice)</td></tr>
+                        <tr><td>Bytes down</td><td>: $(bytes-out-nice)</td></tr>
+                    $(if session-time-left)
+                        <tr><td>Connected / left</td><td>: $(uptime) / $(session-time-left)</td></tr>
+                    $(else)
+                        <tr><td>Connected</td><td>: $(uptime)</td></tr>
+                    $(endif)
+                    $(if blocked == 'yes')
+                        <tr><td>Status</td><td>: <a href="$(link-advert)" target="hotspot_advert">Advertisement required</a></td>
+                        </tr>
+                    $(elif refresh-timeout)
+                        <tr><td>Status refresh</td><td>: $(refresh-timeout)</td></tr>
+                    $(endif)
+                        </table>
+                    $(if login-by-mac != 'yes')
+                    user manager link. if user manager resides on other router, replace $(hostname) by its address
+                    <button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+                    end of user manager link
+                    <input type="submit" value="Log out">
+                    $(endif)
+                </form>
+            </div> -->
+</body>
+</html>

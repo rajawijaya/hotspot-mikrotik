@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(19, 151, 225);
+
+}
+
+.container {
+    background-image: url(/img/hero-image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.title {
+    color: white;
+    padding: 50px 0 0 100px;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.info {
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    font-size: 1.5em;
+}
+
+.trial a {
+    background-color: rgb(0, 66, 151);
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: rgba(42, 42, 255, 0.295);
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+}
+
+form input {
+    outline: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 50px;
+    font-size: 1.5em;
+    border: none;
+}
+
+form input:focus {
+    outline: 2px solid rgb(0, 66, 151);
+}
+
+form input:last-child {
+    background-color: rgb(0, 66, 151);
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.trial a:hover, form input:last-child:hover {
+    background-color: rgb(0, 110, 255);
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .title {
+        font-size: 2em;
+        padding: 30px 0 0 50px;
+    }
+
+    .info h1 {
+        font-size: 1.5em;
+    }
+
+    .info:nth-child(2) {
+        line-height: normal;
+    }
+
+    .trial {
+        padding: 10px 0 30px;
+        line-height: 50px;
+    }
+
+    form {
+        width: 300px;
+        margin: 20px auto;
+    }
+}

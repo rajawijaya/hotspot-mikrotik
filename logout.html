@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>Internet hotspot - Log out</title>
+<link rel="stylesheet" href="css/status.css">
+<script>
+    function openLogin() {
+	if (window.name != 'hotspot_logout') return true;
+	open('$(link-login)', '_blank', '');
+	window.close();
+	return false;
+    }
+</script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="title">ICafe</div>
+        <div class="info">
+            <h1>Kamu Baru Saja Keluar!</h1>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="card ">
+                <h1>101.213.20.15</h1>
+                <p>IP Address</p>
+            </div>
+
+            <div class="card ">
+                <h1>AE:52:WE:85:12</h1>
+                <p>MAC Address</p>
+            </div>
+    
+            <div class="card ">
+                <h1>20 Mib</h1>
+                <p>Upload</p>
+            </div>
+    
+            <div class="card ">
+                <h1>50 Mib</h1>
+                <p>Download</p>
+            </div>
+    
+            <div class="card ">
+                <h1>1m30s</h1>
+                <p>Terkoneksi</p>
+            </div>
+    
+            <!-- $(if session-time-left) -->
+            <div class="card ">
+                <h1>30s</h1>
+                <p>Sisa Waktu</p>
+            </div>
+            <!-- $(endif) -->
+        </div>
+
+        <!-- $(if login-by-mac != 'yes') -->
+        <form action="">
+            <input type="submit" value="Masuk">
+        </form>
+        <!-- $(endif) -->
+    </div>
+
+
+
+
+            <!-- <div class="wrap">
+                <h1>Kamu Baru Saja Keluar!</h1> 
+                <table>  
+                    <tr><td>Username</td><td>: $(username)</td></tr>
+                    <tr><td>IP address</td><td>: $(ip)</td></tr>
+                    <tr><td>MAC address</td><td>: $(mac)</td></tr>
+                    <tr><td>Session time</td><td>: $(uptime)</td></tr>
+                    $(if session-time-left)
+                    <tr><td>Time left</td><td>: $(session-time-left)</td></tr>
+                    $(endif)
+                    <tr><td>Bytes up</td><td>: $(bytes-in-nice)</td></tr>
+                    <tr><td>Bytes down</td><td>: $(bytes-out-nice)</td></tr>
+                </table>
+
+
+                <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                <input type="submit" value="Log in">
+                </form>
+            </div> -->
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICafe</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- $(if chap-id) -->
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    <!-- $(endif) -->
+    
+    <div class="container">
+        <div class="title">ICafe</div>
+        <div class="info">
+            <h1>Selamat Datang</h1>
+            <p>Silahkan masuk untuk mendapatkan akses internet!</p>
+            <!-- $(if trial == 'yes') -->
+            <div class="trial">
+                <p>Atau coba gratis selama 1 jam <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">Coba Gratis</a></p>
+            </div>
+            <!-- $(endif) -->
+            <!-- $(if error) -->
+            <div class="error">
+                <p>Display Error</p>
+            </div>
+            <!-- $(endif) -->
+        </div>
+        <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" class="hidden"/>
+            <input type="hidden" name="popup" value="true" class="hidden"/>
+
+            <input type="text" name="username" id="username" value="" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="submit" value="Hubungkan">
+        </form>
+    </div>
+
+</body>
+</html>
